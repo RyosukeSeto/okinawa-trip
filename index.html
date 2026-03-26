@@ -25,8 +25,8 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text
 .header-sub{color:var(--text-dim);font-size:0.8rem;margin-top:6px;font-weight:300;letter-spacing:0.1em;}
 .header-emoji{font-size:2rem;margin-bottom:8px;}
 
-.sync-badge{text-align:center;margin:4px 0 12px;font-size:0.65rem;color:var(--accent);opacity:0.8;}
-.sync-badge.error{color:var(--accent2);}
+.notice{text-align:center;margin:0 0 14px;padding:8px 14px;font-size:0.68rem;color:#b45309;
+  background:rgba(251,191,36,0.12);border:1px solid rgba(251,191,36,0.3);border-radius:10px;}
 
 .rental-bar{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 16px;margin:0 0 20px;
   display:flex;align-items:center;gap:10px;font-size:0.78rem;box-shadow:0 2px 8px rgba(0,0,0,0.05);}
@@ -50,7 +50,7 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text
   border-color:var(--accent);color:var(--accent);}
 .tab .day-num{font-size:0.65rem;opacity:0.7;}
 .tab .day-date{font-weight:700;font-size:0.85rem;}
-.tab-badge{font-size:0.55rem;background:var(--accent);color:#fff;border-radius:8px;padding:1px 5px;font-weight:700;margin-top:1px;}
+.tab-badge{font-size:0.55rem;background:rgba(251,191,36,0.2);color:#b45309;border-radius:8px;padding:1px 5px;font-weight:700;margin-top:1px;}
 
 .day-panel{display:none;animation:fadeIn 0.3s ease;}
 .day-panel.active{display:block;}
@@ -82,7 +82,6 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text
 .event.food .event-tag{background:rgba(249,115,22,0.12);color:var(--orange);}
 .event.shopping .event-tag{background:rgba(236,72,153,0.12);color:var(--pink);}
 .event.other .event-tag{background:rgba(100,116,139,0.12);color:var(--text-dim);}
-
 .event-del{position:absolute;top:10px;right:12px;background:none;border:none;color:var(--text-dim);
   cursor:pointer;font-size:0.85rem;padding:2px 4px;opacity:0;transition:opacity 0.2s;}
 .event:hover .event-del{opacity:1;}
@@ -96,7 +95,7 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text
   color:var(--text-dim);font-size:0.8rem;font-family:inherit;cursor:pointer;transition:all 0.25s;width:100%;}
 .add-event-toggle:hover{border-color:var(--accent);color:var(--accent);}
 
-.add-event-form{background:var(--card);border:1px solid var(--accent);border-radius:14px;padding:16px;margin-bottom:12px;
+.add-event-form,.add-cand-form{background:var(--card);border:1px solid var(--accent);border-radius:14px;padding:16px;margin-bottom:12px;
   animation:fadeIn 0.25s ease;box-shadow:0 4px 16px rgba(14,165,160,0.1);}
 .form-row{display:flex;gap:8px;margin-bottom:10px;}
 .form-field{display:flex;flex-direction:column;gap:4px;flex:1;}
@@ -115,14 +114,15 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text
 .btn-ghost{background:transparent;color:var(--text-dim);border:1px solid var(--border);}
 .btn-ghost:hover{border-color:var(--text-dim);color:var(--text);}
 
-.note-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:6px;
-  font-size:0.8rem;display:flex;align-items:flex-start;gap:10px;position:relative;transition:all 0.2s;box-shadow:0 1px 4px rgba(0,0,0,0.03);}
-.note-item:hover{border-color:rgba(14,165,160,0.4);}
-.note-text{flex:1;line-height:1.5;word-break:break-word;min-height:1.2em;}
-.note-time{font-size:0.62rem;color:var(--text-dim);white-space:nowrap;margin-top:2px;}
-.note-del{background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:0.85rem;padding:0 2px;opacity:0;transition:opacity 0.2s;}
-.note-item:hover .note-del{opacity:1;}
-.note-del:hover{color:var(--accent2);}
+.memo-box{background:rgba(255,251,235,0.7);border:1px solid #fde68a;border-radius:12px;padding:12px 14px;margin-bottom:8px;
+  font-size:0.78rem;line-height:1.5;position:relative;transition:all 0.2s;}
+.memo-box:hover{border-color:#fbbf24;}
+.memo-text{word-break:break-word;}
+.memo-time{font-size:0.6rem;color:var(--text-dim);margin-top:4px;}
+.memo-del{position:absolute;top:8px;right:10px;background:none;border:none;color:var(--text-dim);
+  cursor:pointer;font-size:0.8rem;opacity:0;transition:opacity 0.2s;}
+.memo-box:hover .memo-del{opacity:1;}
+.memo-del:hover{color:var(--accent2);}
 
 .add-note-wrap{display:flex;gap:8px;margin-top:10px;}
 .add-note-input{flex:1;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 14px;
@@ -143,7 +143,7 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text
 .cand-section-title .emoji{font-size:1.1rem;}
 .cand-category{font-size:0.65rem;color:var(--text-dim);font-weight:500;margin:14px 0 8px;padding-left:4px;}
 .cand-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:8px;
-  transition:border-color 0.2s;box-shadow:0 2px 6px rgba(0,0,0,0.04);}
+  transition:border-color 0.2s;box-shadow:0 2px 6px rgba(0,0,0,0.04);position:relative;}
 .cand-card:hover{border-color:rgba(14,165,160,0.4);}
 .cand-card-name{font-size:0.85rem;font-weight:700;margin-bottom:3px;}
 .cand-card-desc{font-size:0.72rem;color:var(--text-dim);line-height:1.4;margin-bottom:6px;}
@@ -153,6 +153,10 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text
 .cand-tag{font-size:0.6rem;padding:2px 8px;border-radius:6px;font-weight:500;}
 .cand-tag.food{background:rgba(249,115,22,0.12);color:var(--orange);}
 .cand-tag.activity{background:rgba(139,92,246,0.12);color:var(--purple);}
+.cand-del{position:absolute;top:8px;right:10px;background:none;border:none;color:var(--text-dim);
+  cursor:pointer;font-size:0.8rem;opacity:0;transition:opacity 0.2s;}
+.cand-card:hover .cand-del{opacity:1;}
+.cand-del:hover{color:var(--accent2);}
 </style>
 </head>
 <body>
@@ -164,7 +168,7 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text
     <div class="header-sub">2026.3.31 TUE → 4.6 MON ｜ 沖縄 & 宮古島</div>
   </div>
   <div class="countdown" id="countdown"></div>
-  <div class="sync-badge" id="sync-badge">🔄 接続中...</div>
+  <div class="notice">⚠️ 個人情報（住所・電話番号・クレカ番号など）は入力しないでください</div>
   <div class="rental-bar">
     <span class="icon">🚗</span>
     <div>
@@ -180,61 +184,17 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text
     <div class="tabs" id="tabs"></div>
     <div id="panels"></div>
   </div>
-  <div class="candidate-view" id="candidates-view">
-    <div class="cand-section">
-      <div class="cand-section-title"><span class="emoji">🍽</span> 宮古島 居酒屋候補</div>
-      <div class="cand-category">🆕 今風・若者向け</div>
-      <div class="cand-card"><div class="cand-card-name">みやこパーラー ハイサイ!</div><div class="cand-card-desc">ツマンデ呑めるカジュアル居酒屋。今風の雰囲気。</div><a class="cand-card-link" href="https://tabelog.com/okinawa/A4705/A470503/47029115/" target="_blank" rel="noopener">食べログで見る →</a><div class="cand-card-tags"><span class="cand-tag food">居酒屋</span></div></div>
-      <div class="cand-category">🎵 定番の民謡居酒屋</div>
-      <div class="cand-card"><div class="cand-card-name">美琉太陽（ミルティーダ）</div><div class="cand-card-desc">ライブ演奏が楽しめる民謡居酒屋。</div><a class="cand-card-link" href="https://tabelog.com/okinawa/A4705/A470503/47015071/" target="_blank" rel="noopener">食べログで見る →</a><div class="cand-card-tags"><span class="cand-tag food">民謡居酒屋</span></div></div>
-      <div class="cand-card"><div class="cand-card-name">一魚一会 宮古島店</div><div class="cand-card-desc">海鮮と民謡が楽しめる宮古島の定番。</div><a class="cand-card-link" href="https://tabelog.com/okinawa/A4705/A470503/47016348/" target="_blank" rel="noopener">食べログで見る →</a><div class="cand-card-tags"><span class="cand-tag food">民謡居酒屋</span><span class="cand-tag food">海鮮</span></div></div>
-      <div class="cand-category">🍶 日本酒あり</div>
-      <div class="cand-card"><div class="cand-card-name">縁の郷</div><div class="cand-card-desc">日本酒のラインナップが充実した居酒屋。</div><a class="cand-card-link" href="https://tabelog.com/okinawa/A4705/A470503/47020439/" target="_blank" rel="noopener">食べログで見る →</a><div class="cand-card-tags"><span class="cand-tag food">居酒屋</span><span class="cand-tag food">日本酒</span></div></div>
-      <div class="cand-category">🏖 イラフ SUI 周辺</div>
-      <div class="cand-card"><div class="cand-card-name">居酒屋 でんみ</div><div class="cand-card-desc">SUI周辺エリアの居酒屋。</div><a class="cand-card-link" href="https://tabelog.com/okinawa/A4705/A470503/47019867/" target="_blank" rel="noopener">食べログで見る →</a><div class="cand-card-tags"><span class="cand-tag food">居酒屋</span><span class="cand-tag food">SUI周辺</span></div></div>
-    </div>
-    <div class="cand-section">
-      <div class="cand-section-title"><span class="emoji">🏄</span> アクティビティ候補</div>
-      <div class="cand-card"><div class="cand-card-name">カヌーツアー</div><div class="cand-card-desc">マングローブや海のカヌー体験。</div><div class="cand-card-tags"><span class="cand-tag activity">アクティビティ</span></div></div>
-      <div class="cand-card"><div class="cand-card-name">シュノーケル</div><div class="cand-card-desc">宮古島の透明度抜群の海でシュノーケリング。</div><div class="cand-card-tags"><span class="cand-tag activity">アクティビティ</span></div></div>
-      <div class="cand-card"><div class="cand-card-name">ダイビング</div><div class="cand-card-desc">体験ダイビングやファンダイビング。</div><div class="cand-card-tags"><span class="cand-tag activity">アクティビティ</span></div></div>
-    </div>
-  </div>
+  <div class="candidate-view" id="candidates-view"></div>
 </div>
 
 <script>
 // === Firebase REST API ===
-const DB_URL = 'https://okinawa-4efb2-default-rtdb.firebaseio.com';
+const DB='https://okinawa-4efb2-default-rtdb.firebaseio.com';
+async function fbGet(p){try{const r=await fetch(`${DB}/${p}.json`);if(!r.ok)throw r.status;return await r.json();}catch(e){console.error('GET:',e);return null;}}
+async function fbPush(p,d){try{const r=await fetch(`${DB}/${p}.json`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});if(!r.ok)throw r.status;return(await r.json()).name;}catch(e){console.error('PUSH:',e);return null;}}
+async function fbDel(p){try{await fetch(`${DB}/${p}.json`,{method:'DELETE'});}catch(e){console.error('DEL:',e);}}
 
-async function fbGet(path){
-  try{
-    const r = await fetch(`${DB_URL}/${path}.json`);
-    if(!r.ok) throw new Error(r.status);
-    return await r.json();
-  }catch(e){console.error('GET error:',e);return null;}
-}
-async function fbSet(path, data){
-  try{
-    const r = await fetch(`${DB_URL}/${path}.json`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-    return r.ok;
-  }catch(e){console.error('SET error:',e);return false;}
-}
-async function fbPush(path, data){
-  try{
-    const r = await fetch(`${DB_URL}/${path}.json`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-    if(!r.ok) throw new Error(r.status);
-    const res = await r.json();
-    return res.name;
-  }catch(e){console.error('PUSH error:',e);return null;}
-}
-async function fbDelete(path){
-  try{
-    await fetch(`${DB_URL}/${path}.json`,{method:'DELETE'});
-  }catch(e){console.error('DELETE error:',e);}
-}
-
-// === App data ===
-const CATEGORIES = {
+const CATEGORIES={
   activity:{emoji:'🏄',label:'アクティビティ',cls:'activity'},
   food:{emoji:'🍽',label:'グルメ',cls:'food'},
   shopping:{emoji:'🛍',label:'ショッピング',cls:'shopping'},
@@ -243,27 +203,32 @@ const CATEGORIES = {
   other:{emoji:'📌',label:'その他',cls:'other'},
 };
 
-const days = [
-  {date:'3/31',dow:'火',label:'DAY 1',events:[
-    {type:'flight',tag:'✈ フライト',time:'9:50 → 11:35',title:'福岡 → 沖縄（那覇）',detail:'ANA1205'},
-  ]},
+const defaultCandidates={
+  food:[
+    {name:'みやこパーラー ハイサイ!',desc:'ツマンデ呑めるカジュアル居酒屋。今風の雰囲気。',cat:'🆕 今風・若者向け',url:'https://tabelog.com/okinawa/A4705/A470503/47029115/',tags:['居酒屋']},
+    {name:'美琉太陽（ミルティーダ）',desc:'ライブ演奏が楽しめる民謡居酒屋。',cat:'🎵 定番の民謡居酒屋',url:'https://tabelog.com/okinawa/A4705/A470503/47015071/',tags:['民謡居酒屋']},
+    {name:'一魚一会 宮古島店',desc:'海鮮と民謡が楽しめる宮古島の定番。',cat:'🎵 定番の民謡居酒屋',url:'https://tabelog.com/okinawa/A4705/A470503/47016348/',tags:['民謡居酒屋','海鮮']},
+    {name:'縁の郷',desc:'日本酒のラインナップが充実した居酒屋。',cat:'🍶 日本酒あり',url:'https://tabelog.com/okinawa/A4705/A470503/47020439/',tags:['居酒屋','日本酒']},
+    {name:'居酒屋 でんみ',desc:'SUI周辺エリアの居酒屋。',cat:'🏖 イラフ SUI 周辺',url:'https://tabelog.com/okinawa/A4705/A470503/47019867/',tags:['居酒屋','SUI周辺']},
+  ],
+  activity:[
+    {name:'カヌーツアー',desc:'マングローブや海のカヌー体験。',tags:['アクティビティ']},
+    {name:'シュノーケル',desc:'宮古島の透明度抜群の海でシュノーケリング。',tags:['アクティビティ']},
+    {name:'ダイビング',desc:'体験ダイビングやファンダイビング。',tags:['アクティビティ']},
+  ]
+};
+
+const days=[
+  {date:'3/31',dow:'火',label:'DAY 1',events:[{type:'flight',tag:'✈ フライト',time:'9:50 → 11:35',title:'福岡 → 沖縄（那覇）',detail:'ANA1205'}]},
   {date:'4/1',dow:'水',label:'DAY 2',events:[
     {type:'flight',tag:'✈ フライト',time:'11:55 → 12:50',title:'那覇 → 宮古島',detail:'ANA1725 ｜ 確認番号: 421682250'},
     {type:'car',tag:'🚗 レンタカー',time:'13:00',title:'レンタカー ピックアップ',detail:'沖縄プレミアムレンタカー'},
     {type:'hotel',tag:'🏨 宿泊',time:'15:00 チェックイン',title:'イラフ SUI ラグジュアリーコレクション',detail:''},
   ]},
-  {date:'4/2',dow:'木',label:'DAY 3',events:[
-    {type:'hotel',tag:'🏨 宿泊',time:'終日',title:'イラフ SUI',detail:'フリーデー'},
-  ]},
-  {date:'4/3',dow:'金',label:'DAY 4',events:[
-    {type:'hotel',tag:'🏨 チェックアウト',time:'16:00',title:'イラフ SUI チェックアウト',detail:''},
-  ]},
-  {date:'4/4',dow:'土',label:'DAY 5',events:[
-    {type:'hotel',tag:'🏠 Airbnb',time:'15:00 チェックイン',title:'Airbnb チェックイン',detail:''},
-  ]},
-  {date:'4/5',dow:'日',label:'DAY 6',events:[
-    {type:'hotel',tag:'🏠 Airbnb',time:'終日',title:'Airbnb 滞在',detail:''},
-  ]},
+  {date:'4/2',dow:'木',label:'DAY 3',events:[{type:'hotel',tag:'🏨 宿泊',time:'終日',title:'イラフ SUI',detail:'フリーデー'}]},
+  {date:'4/3',dow:'金',label:'DAY 4',events:[{type:'hotel',tag:'🏨 チェックアウト',time:'16:00',title:'イラフ SUI チェックアウト',detail:''}]},
+  {date:'4/4',dow:'土',label:'DAY 5',events:[{type:'hotel',tag:'🏠 Airbnb',time:'15:00 チェックイン',title:'Airbnb チェックイン',detail:''}]},
+  {date:'4/5',dow:'日',label:'DAY 6',events:[{type:'hotel',tag:'🏠 Airbnb',time:'終日',title:'Airbnb 滞在',detail:''}]},
   {date:'4/6',dow:'月',label:'DAY 7',events:[
     {type:'hotel',tag:'🏠 チェックアウト',time:'AM',title:'Airbnb チェックアウト',detail:''},
     {type:'car',tag:'🚗 レンタカー',time:'〜15:00',title:'レンタカー 返却',detail:'沖縄プレミアムレンタカー'},
@@ -272,20 +237,10 @@ const days = [
   ]},
 ];
 
-let activeDay = 0;
-let mainTab = 'schedule';
-let userEvents = {};
-let notes = {};
-let formOpen = {};
+let activeDay=0,mainTab='schedule',formOpen={},candFormOpen={food:false,activity:false};
+let userEvents={},notes={},candidates={food:{},activity:{}};
 
-function escHtml(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
-
-function updateSyncBadge(s){
-  const el=document.getElementById('sync-badge');
-  if(s==='ok'){el.textContent='☁️ リアルタイム同期中 — 全員に反映されます';el.className='sync-badge';}
-  else if(s==='err'){el.textContent='⚠️ 接続エラー — リロードしてください';el.className='sync-badge error';}
-  else{el.textContent='🔄 同期中...';el.className='sync-badge';}
-}
+function escH(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
 
 function switchMainTab(tab){
   mainTab=tab;
@@ -294,25 +249,21 @@ function switchMainTab(tab){
   });
   document.getElementById('schedule-view').style.display=tab==='schedule'?'block':'none';
   document.getElementById('candidates-view').classList.toggle('active',tab==='candidates');
+  if(tab==='candidates')renderCandidates();
 }
 
 function render(){
-  const tabsEl=document.getElementById('tabs');
-  tabsEl.innerHTML=days.map((d,i)=>{
-    const ue=userEvents[i];
-    const uc=ue?Object.keys(ue).length:0;
+  document.getElementById('tabs').innerHTML=days.map((d,i)=>{
+    const nc=notes[i]?Object.keys(notes[i]).length:0;
     return `<div class="tab ${i===activeDay?'active':''}" onclick="switchDay(${i})">
       <span class="day-num">${d.label}</span><span class="day-date">${d.date}</span>
-      <span class="day-num">${d.dow}</span>${uc?`<span class="tab-badge">+${uc}</span>`:''}
+      <span class="day-num">${d.dow}</span>${nc?`<span class="tab-badge">📝${nc}</span>`:''}
     </div>`;
   }).join('');
 
-  const panelsEl=document.getElementById('panels');
-  panelsEl.innerHTML=days.map((d,i)=>{
-    const ueObj=userEvents[i]||{};
-    const ueArr=Object.entries(ueObj);
-    const dnObj=notes[i]||{};
-    const dnArr=Object.entries(dnObj);
+  document.getElementById('panels').innerHTML=days.map((d,i)=>{
+    const ueArr=Object.entries(userEvents[i]||{});
+    const dnArr=Object.entries(notes[i]||{});
     const fo=formOpen[i]||false;
 
     const fixedHtml=d.events.map(e=>`
@@ -324,65 +275,120 @@ function render(){
       <div class="event ${e.type}">
         <button class="event-del" onclick="deleteEvent(${i},'${key}')">✕</button>
         <div class="event-tag">${e.tag}</div><div class="event-time">${e.time}</div>
-        <div class="event-title">${escHtml(e.title)}</div>
-        ${e.detail?`<div class="event-detail">${escHtml(e.detail)}</div>`:''}</div>`).join('');
+        <div class="event-title">${escH(e.title)}</div>
+        ${e.detail?`<div class="event-detail">${escH(e.detail)}</div>`:''}</div>`).join('');
+
+    const timeOpts=`<option value="">未定</option><option value="終日">終日</option>`+
+      Array.from({length:31},(_,h)=>{const hh=String(Math.floor(h/2)+7).padStart(2,'0');const mm=h%2===0?'00':'30';return(h/2+7<=22)?`<option value="${hh}:${mm}">${hh}:${mm}</option>`:''}).join('');
 
     const formHtml=fo?`
       <div class="add-event-form">
         <div class="form-row"><div class="form-field"><label>カテゴリ</label>
           <select id="f-cat-${i}">${Object.entries(CATEGORIES).map(([k,v])=>`<option value="${k}">${v.emoji} ${v.label}</option>`).join('')}</select>
-        </div><div class="form-field"><label>時間</label><input type="text" id="f-time-${i}" placeholder="例: 12:00"></div></div>
+        </div><div class="form-field"><label>時間</label><select id="f-time-${i}">${timeOpts}</select></div></div>
         <div class="form-row"><div class="form-field"><label>タイトル *</label><input type="text" id="f-title-${i}" placeholder="例: シュノーケリング"></div></div>
         <div class="form-row"><div class="form-field"><label>詳細（任意）</label><input type="text" id="f-detail-${i}" placeholder="場所、予約番号など"></div></div>
         <div class="form-actions"><button class="btn btn-ghost" onclick="toggleForm(${i})">キャンセル</button>
           <button class="btn btn-primary" onclick="submitEvent(${i})">追加</button></div>
-      </div>`:
-      `<button class="add-event-toggle" onclick="toggleForm(${i})"><span class="plus">+</span> 予定を追加</button>`;
+      </div>`:`<button class="add-event-toggle" onclick="toggleForm(${i})"><span class="plus">+</span> 予定を追加</button>`;
 
-    const notesHtml=dnArr.map(([key,n])=>`
-      <div class="note-item"><div class="note-text">${escHtml(n.text)}</div>
-        <span class="note-time">${n.time||''}</span>
-        <button class="note-del" onclick="deleteNote(${i},'${key}')">✕</button></div>`).join('');
+    const memosHtml=dnArr.map(([key,n])=>`
+      <div class="memo-box">
+        <button class="memo-del" onclick="deleteNote(${i},'${key}')">✕</button>
+        <div class="memo-text">${escH(n.text)}</div>
+        <div class="memo-time">${n.time||''}</div>
+      </div>`).join('');
 
     return `<div class="day-panel ${i===activeDay?'active':''}">
       <div class="day-header"><h2>${d.date}（${d.dow}）</h2><span class="day-label">${d.label}</span></div>
       ${fixedHtml}${userHtml}${formHtml}
       <div class="section-divider">📝 メモ</div>
-      <div class="notes-section">${notesHtml}
-        <div class="add-note-wrap">
-          <input class="add-note-input" id="input-${i}" placeholder="メモを追加..."
-            onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();addNote(${i});}">
-          <button class="add-note-btn" onclick="addNote(${i})">+</button>
-        </div>
-      </div></div>`;
+      ${memosHtml}
+      <div class="add-note-wrap">
+        <input class="add-note-input" id="input-${i}" placeholder="メモを追加..."
+          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();addNote(${i});}">
+        <button class="add-note-btn" onclick="addNote(${i})">+</button>
+      </div>
+    </div>`;
   }).join('');
   updateCountdown();
+}
+
+function renderCandidates(){
+  const cv=document.getElementById('candidates-view');
+  const foodArr=Object.entries(candidates.food||{});
+  const actArr=Object.entries(candidates.activity||{});
+  const catGroups={};
+  foodArr.forEach(([k,c])=>{const cat=c.cat||'その他';if(!catGroups[cat])catGroups[cat]=[];catGroups[cat].push([k,c]);});
+
+  let foodHtml='';
+  Object.entries(catGroups).forEach(([cat,items])=>{
+    foodHtml+=`<div class="cand-category">${escH(cat)}</div>`;
+    items.forEach(([key,c])=>{
+      foodHtml+=`<div class="cand-card">
+        <button class="cand-del" onclick="deleteCand('food','${key}')">✕</button>
+        <div class="cand-card-name">${escH(c.name)}</div>
+        <div class="cand-card-desc">${escH(c.desc||'')}</div>
+        ${c.url?`<a class="cand-card-link" href="${c.url}" target="_blank" rel="noopener">食べログで見る →</a>`:''}
+        <div class="cand-card-tags">${(c.tags||[]).map(t=>`<span class="cand-tag food">${escH(t)}</span>`).join('')}</div>
+      </div>`;
+    });
+  });
+
+  const actHtml=actArr.map(([key,c])=>`
+    <div class="cand-card">
+      <button class="cand-del" onclick="deleteCand('activity','${key}')">✕</button>
+      <div class="cand-card-name">${escH(c.name)}</div>
+      <div class="cand-card-desc">${escH(c.desc||'')}</div>
+      ${c.url?`<a class="cand-card-link" href="${c.url}" target="_blank" rel="noopener">リンク →</a>`:''}
+      <div class="cand-card-tags">${(c.tags||[]).map(t=>`<span class="cand-tag activity">${escH(t)}</span>`).join('')}</div>
+    </div>`).join('');
+
+  const foodForm=candFormOpen.food?`
+    <div class="add-cand-form">
+      <div class="form-row"><div class="form-field"><label>店名 *</label><input type="text" id="cf-name-food" placeholder="例: 島唄居酒屋"></div></div>
+      <div class="form-row"><div class="form-field"><label>説明</label><input type="text" id="cf-desc-food" placeholder="ジャンル、雰囲気など"></div></div>
+      <div class="form-row"><div class="form-field"><label>カテゴリ</label><input type="text" id="cf-cat-food" placeholder="例: 🆕 今風・若者向け"></div>
+        <div class="form-field"><label>URL（任意）</label><input type="text" id="cf-url-food" placeholder="食べログURLなど"></div></div>
+      <div class="form-actions"><button class="btn btn-ghost" onclick="toggleCandForm('food')">キャンセル</button>
+        <button class="btn btn-primary" onclick="submitCand('food')">追加</button></div>
+    </div>`:`<button class="add-event-toggle" onclick="toggleCandForm('food')"><span class="plus">+</span> 居酒屋・飲食店を追加</button>`;
+
+  const actForm=candFormOpen.activity?`
+    <div class="add-cand-form">
+      <div class="form-row"><div class="form-field"><label>アクティビティ名 *</label><input type="text" id="cf-name-act" placeholder="例: SUP体験"></div></div>
+      <div class="form-row"><div class="form-field"><label>説明</label><input type="text" id="cf-desc-act" placeholder="内容、場所など"></div></div>
+      <div class="form-row"><div class="form-field"><label>URL（任意）</label><input type="text" id="cf-url-act" placeholder="予約サイトURLなど"></div></div>
+      <div class="form-actions"><button class="btn btn-ghost" onclick="toggleCandForm('activity')">キャンセル</button>
+        <button class="btn btn-primary" onclick="submitCand('activity')">追加</button></div>
+    </div>`:`<button class="add-event-toggle" onclick="toggleCandForm('activity')"><span class="plus">+</span> アクティビティを追加</button>`;
+
+  cv.innerHTML=`
+    <div class="cand-section"><div class="cand-section-title"><span class="emoji">🍽</span> 宮古島 居酒屋候補</div>${foodHtml}${foodForm}</div>
+    <div class="cand-section"><div class="cand-section-title"><span class="emoji">🏄</span> アクティビティ候補</div>${actHtml}${actForm}</div>`;
 }
 
 function switchDay(i){activeDay=i;formOpen={};render();
   document.getElementById('tabs').children[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});}
 function toggleForm(i){formOpen[i]=!formOpen[i];render();
   if(formOpen[i])setTimeout(()=>{const el=document.getElementById(`f-title-${i}`);if(el)el.focus();},50);}
+function toggleCandForm(t){candFormOpen[t]=!candFormOpen[t];renderCandidates();}
 
 async function submitEvent(i){
   const cat=document.getElementById(`f-cat-${i}`).value;
-  const time=document.getElementById(`f-time-${i}`).value.trim();
+  const time=document.getElementById(`f-time-${i}`).value;
   const title=document.getElementById(`f-title-${i}`).value.trim();
   const detail=document.getElementById(`f-detail-${i}`).value.trim();
   if(!title){document.getElementById(`f-title-${i}`).focus();return;}
   const c=CATEGORIES[cat];
-  const key=await fbPush(`events/${i}`,{type:c.cls,tag:`${c.emoji} ${c.label}`,time:time||'−',title,detail});
-  if(key){
-    if(!userEvents[i])userEvents[i]={};
-    userEvents[i][key]={type:c.cls,tag:`${c.emoji} ${c.label}`,time:time||'−',title,detail};
-  }
+  const data={type:c.cls,tag:`${c.emoji} ${c.label}`,time:time||'−',title,detail};
+  const key=await fbPush(`events/${i}`,data);
+  if(key){if(!userEvents[i])userEvents[i]={};userEvents[i][key]=data;}
   formOpen[i]=false;render();
 }
-
 async function deleteEvent(i,key){
-  await fbDelete(`events/${i}/${key}`);
-  if(userEvents[i])delete userEvents[i][key];
-  render();
+  await fbDel(`events/${i}/${key}`);
+  if(userEvents[i])delete userEvents[i][key];render();
 }
 
 async function addNote(i){
@@ -390,20 +396,38 @@ async function addNote(i){
   const text=input.value.trim();if(!text)return;
   const now=new Date();
   const time=`${now.getMonth()+1}/${now.getDate()} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
-  const noteData={text,time};
-  const key=await fbPush(`notes/${i}`,noteData);
-  if(key){
-    if(!notes[i])notes[i]={};
-    notes[i][key]=noteData;
-  }
+  const data={text,time};
+  const key=await fbPush(`notes/${i}`,data);
+  if(key){if(!notes[i])notes[i]={};notes[i][key]=data;}
   input.value='';render();
   document.getElementById(`input-${i}`).focus();
 }
-
 async function deleteNote(i,key){
-  await fbDelete(`notes/${i}/${key}`);
-  if(notes[i])delete notes[i][key];
-  render();
+  await fbDel(`notes/${i}/${key}`);
+  if(notes[i])delete notes[i][key];render();
+}
+
+async function submitCand(type){
+  let data;
+  if(type==='food'){
+    const name=document.getElementById('cf-name-food').value.trim();
+    if(!name){document.getElementById('cf-name-food').focus();return;}
+    data={name,desc:document.getElementById('cf-desc-food').value.trim(),
+      cat:document.getElementById('cf-cat-food').value.trim()||'その他',
+      url:document.getElementById('cf-url-food').value.trim(),tags:['居酒屋']};
+  }else{
+    const name=document.getElementById('cf-name-act').value.trim();
+    if(!name){document.getElementById('cf-name-act').focus();return;}
+    data={name,desc:document.getElementById('cf-desc-act').value.trim(),
+      url:document.getElementById('cf-url-act').value.trim(),tags:['アクティビティ']};
+  }
+  const key=await fbPush(`candidates/${type}`,data);
+  if(key){if(!candidates[type])candidates[type]={};candidates[type][key]=data;}
+  candFormOpen[type]=false;renderCandidates();
+}
+async function deleteCand(type,key){
+  await fbDel(`candidates/${type}/${key}`);
+  if(candidates[type])delete candidates[type][key];renderCandidates();
 }
 
 function updateCountdown(){
@@ -413,31 +437,31 @@ function updateCountdown(){
   else{el.innerHTML=`出発まであと <strong>${Math.ceil(diff/(864e5))}</strong> 日`;}
 }
 
-// === Load & auto-refresh ===
-async function loadAll(){
-  updateSyncBadge('loading');
-  const [ev,nt]=await Promise.all([fbGet('events'),fbGet('notes')]);
-  if(ev!==null||nt!==null){
-    userEvents=ev||{};notes=nt||{};
-    updateSyncBadge('ok');
+// === Init: load data, seed defaults if needed ===
+async function init(){
+  const [ev,nt,cand]=await Promise.all([fbGet('events'),fbGet('notes'),fbGet('candidates')]);
+  userEvents=ev||{};notes=nt||{};
+  if(cand&&(cand.food||cand.activity)){
+    candidates=cand;
   }else{
-    updateSyncBadge('err');
+    // Seed default candidates
+    candidates={food:{},activity:{}};
+    for(const c of defaultCandidates.food){const k=await fbPush('candidates/food',c);if(k)candidates.food[k]=c;}
+    for(const c of defaultCandidates.activity){const k=await fbPush('candidates/activity',c);if(k)candidates.activity[k]=c;}
   }
   render();
 }
 
 async function refresh(){
-  const [ev,nt]=await Promise.all([fbGet('events'),fbGet('notes')]);
-  if(ev!==null||nt!==null){
-    const newEv=ev||{};const newNt=nt||{};
-    if(JSON.stringify(newEv)!==JSON.stringify(userEvents)||JSON.stringify(newNt)!==JSON.stringify(notes)){
-      userEvents=newEv;notes=newNt;render();
-    }
-    updateSyncBadge('ok');
-  }
+  const [ev,nt,cand]=await Promise.all([fbGet('events'),fbGet('notes'),fbGet('candidates')]);
+  if(ev!==null)userEvents=ev||{};
+  if(nt!==null)notes=nt||{};
+  if(cand!==null)candidates=cand||{food:{},activity:{}};
+  render();
+  if(mainTab==='candidates')renderCandidates();
 }
 
-loadAll();
+init();
 setInterval(refresh,6000);
 </script>
 </body>
