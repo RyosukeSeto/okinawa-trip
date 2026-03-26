@@ -266,17 +266,34 @@ function render(){
     const dnArr=Object.entries(notes[i]||{});
     const fo=formOpen[i]||false;
 
-    const fixedHtml=d.events.map(e=>`
+    // Merge fixed + user events and sort by time
+    function timeToNum(t){
+      if(!t||t==='−')return 9999;
+      const m=t.match(/^(\d{1,2}):(\d{2})/);
+      if(m)return parseInt(m[1])*60+parseInt(m[2]);
+      if(t==='終日')return -1;
+      if(t==='AM')return 600;
+      const hm=t.match(/(\d{1,2}):(\d{2})/);
+      if(hm)return parseInt(hm[1])*60+parseInt(hm[2]);
+      return 9998;
+    }
+    const allEvents=[];
+    d.events.forEach(e=>allEvents.push({...e,fixed:true}));
+    ueArr.forEach(([key,e])=>allEvents.push({...e,fixed:false,key}));
+    allEvents.sort((a,b)=>timeToNum(a.time)-timeToNum(b.time));
+
+    const eventsHtml=allEvents.map(e=>{
+      if(e.fixed) return `
       <div class="event ${e.type}"><div class="event-tag">${e.tag}</div>
         <div class="event-time">${e.time}</div><div class="event-title">${e.title}</div>
-        ${e.detail?`<div class="event-detail">${e.detail}</div>`:''}</div>`).join('');
-
-    const userHtml=ueArr.map(([key,e])=>`
+        ${e.detail?`<div class="event-detail">${e.detail}</div>`:''}</div>`;
+      return `
       <div class="event ${e.type}">
-        <button class="event-del" onclick="deleteEvent(${i},'${key}')">✕</button>
+        <button class="event-del" onclick="deleteEvent(${i},'${e.key}')">✕</button>
         <div class="event-tag">${e.tag}</div><div class="event-time">${e.time}</div>
         <div class="event-title">${escH(e.title)}</div>
-        ${e.detail?`<div class="event-detail">${escH(e.detail)}</div>`:''}</div>`).join('');
+        ${e.detail?`<div class="event-detail">${escH(e.detail)}</div>`:''}</div>`;
+    }).join('');
 
     const timeOpts=`<option value="">未定</option><option value="終日">終日</option>`+
       Array.from({length:31},(_,h)=>{const hh=String(Math.floor(h/2)+7).padStart(2,'0');const mm=h%2===0?'00':'30';return(h/2+7<=22)?`<option value="${hh}:${mm}">${hh}:${mm}</option>`:''}).join('');
@@ -301,7 +318,7 @@ function render(){
 
     return `<div class="day-panel ${i===activeDay?'active':''}">
       <div class="day-header"><h2>${d.date}（${d.dow}）</h2><span class="day-label">${d.label}</span></div>
-      ${fixedHtml}${userHtml}${formHtml}
+      ${eventsHtml}${formHtml}
       <div class="section-divider">📝 メモ</div>
       ${memosHtml}
       <div class="add-note-wrap">
