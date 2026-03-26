@@ -454,15 +454,15 @@ async function init(){
 
 async function refresh(){
   const [ev,nt,cand]=await Promise.all([fbGet('events'),fbGet('notes'),fbGet('candidates')]);
-  if(ev!==null)userEvents=ev||{};
-  if(nt!==null)notes=nt||{};
-  if(cand!==null)candidates=cand||{food:{},activity:{}};
-  render();
-  if(mainTab==='candidates')renderCandidates();
+  let changed=false;
+  if(ev!==null){const s=JSON.stringify(ev||{});if(s!==JSON.stringify(userEvents)){userEvents=ev||{};changed=true;}}
+  if(nt!==null){const s=JSON.stringify(nt||{});if(s!==JSON.stringify(notes)){notes=nt||{};changed=true;}}
+  if(cand!==null){const s=JSON.stringify(cand||{food:{},activity:{}});if(s!==JSON.stringify(candidates)){candidates=cand||{food:{},activity:{}};changed=true;}}
+  if(changed){render();if(mainTab==='candidates')renderCandidates();}
 }
 
 init();
-setInterval(refresh,6000);
+setInterval(refresh,15000);
 </script>
 </body>
 </html>
